@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TBEF Spark Wings — polished animated</title>
+<style>
+  :root { --bg:#05070f; --ink:#e8ecf8; }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; min-height:100vh; display:grid; place-items:center;
+    background:var(--bg); color:var(--ink); font-family:system-ui,sans-serif;
+    gap:1.25rem; padding:2rem 1.25rem;
+  }
+  h1 { font-size:.95rem; font-weight:600; margin:0; opacity:.9; letter-spacing:.02em; text-align:center; }
+  .row { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:start; }
+  .col { display:grid; gap:.7rem; justify-items:center; }
+  .stage {
+    width:min(420px,92vw); aspect-ratio:16/9;
+    border-radius:18px; overflow:hidden;
+    background:#000; box-shadow:0 24px 70px rgba(0,0,0,.55);
+    position:relative;
+  }
+  .stage svg, .stage img { width:100%; height:100%; display:block; object-fit:cover; }
+  .label { font-size:.85rem; opacity:.7; margin:0; }
+  .note { max-width:42rem; text-align:center; font-size:.8rem; opacity:.55; line-height:1.45; margin:0; }
+  @media (prefers-reduced-motion:reduce) {
+    .aurora-only { display:none !important; }
+    .reduced-fallback { display:block !important; }
+  }
+  .reduced-fallback { display:none; }
+</style>
+</head>
+<body>
+  <h1>The Butterfly Effect Foundation — Spark Wings (your mark)</h1>
+  <div class="row">
+    <div class="col">
+      <div class="stage" aria-label="Still logo">
+        <img src="spark-wings-polished-still.png" alt="Spark Wings still"/>
+      </div>
+      <p class="label">Still</p>
+    </div>
+    <div class="col">
+      <div class="stage" aria-label="Animated aurora logo">
+        <img class="reduced-fallback" src="spark-wings-polished-still.png" alt="Spark Wings still fallback"/>
+        <svg class="aurora-only" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated Spark Wings">
+          <defs>
+            <filter id="auroraWarp" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="3" seed="7" result="noise">
+                <animate attributeName="baseFrequency"
+                  values="0.008 0.018;0.012 0.028;0.007 0.022;0.008 0.018"
+                  dur="9s" repeatCount="indefinite"/>
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" result="displaced">
+                <animate attributeName="scale" values="3;11;5;14;3" dur="8s" repeatCount="indefinite"/>
+              </feDisplacementMap>
+              <feGaussianBlur in="displaced" stdDeviation="0.35" result="soft"/>
+              <feMerge>
+                <feMergeNode in="soft"/>
+              </feMerge>
+            </filter>
+            <filter id="colorShimmer" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+              <feTurbulence type="turbulence" baseFrequency="0.015 0.04" numOctaves="2" seed="3" result="t">
+                <animate attributeName="baseFrequency"
+                  values="0.012 0.03;0.02 0.05;0.012 0.03"
+                  dur="7s" repeatCount="indefinite"/>
+              </feTurbulence>
+              <feColorMatrix in="t" type="matrix" values="
+                0 0 0 0 0.15
+                0 0 0 0 0.85
+                0 0 0 0 0.55
+                0 0 0 0.35 0" result="greenMist"/>
+              <feColorMatrix in="t" type="matrix" values="
+                0 0 0 0 0.55
+                0 0 0 0 0.25
+                0 0 0 0 0.9
+                0 0 0 0.32 0" result="violetMist"/>
+              <feBlend in="greenMist" in2="violetMist" mode="screen" result="mist"/>
+              <feComposite in="mist" in2="SourceGraphic" operator="in" result="mistMasked"/>
+              <feBlend in="SourceGraphic" in2="mistMasked" mode="screen"/>
+            </filter>
+            <radialGradient id="sparkPulse" cx="50%" cy="62%" r="18%">
+              <stop offset="0%" stop-color="#fff6c8" stop-opacity=".55">
+                <animate attributeName="stop-opacity" values=".35;.7;.35" dur="2.6s" repeatCount="indefinite"/>
+              </stop>
+              <stop offset="55%" stop-color="#ffd36a" stop-opacity=".18">
+                <animate attributeName="stop-opacity" values=".1;.28;.1" dur="2.6s" repeatCount="indefinite"/>
+              </stop>
+              <stop offset="100%" stop-color="#ffd36a" stop-opacity="0"/>
+            </radialGradient>
+            <!-- soft ribbon overlays for northern-lights drift -->
+            <linearGradient id="gFlow" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#0E7458" stop-opacity="0"/>
+              <stop offset="45%" stop-color="#3FCCA0" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#7dffd2" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="vFlow" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#5B3FC4" stop-opacity="0"/>
+              <stop offset="45%" stop-color="#A48BF2" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#d2c2ff" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="ribbonGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="3.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- base mark with living aurora warp -->
+          <image href="spark-wings-polished-still.png" width="1280" height="720"
+                 filter="url(#auroraWarp)" preserveAspectRatio="xMidYMid slice"/>
+          <!-- color shimmer layer (screen) -->
+          <image href="spark-wings-polished-still.png" width="1280" height="720"
+                 opacity=".28" style="mix-blend-mode:screen" filter="url(#colorShimmer)"
+                 preserveAspectRatio="xMidYMid slice"/>
+          <!-- drifting aurora ribbons over the wing zones -->
+          <g filter="url(#ribbonGlow)" fill="none" stroke-linecap="round" opacity=".55" style="mix-blend-mode:screen">
+            <path stroke="url(#gFlow)" stroke-width="10" opacity=".7">
+              <animate attributeName="d" dur="6.5s" repeatCount="indefinite"
+                values="M640 470 C 560 420, 470 300, 430 160;
+                        M640 470 C 550 410, 455 285, 410 145;
+                        M640 470 C 565 430, 480 310, 445 170;
+                        M640 470 C 560 420, 470 300, 430 160"/>
+            </path>
+            <path stroke="url(#gFlow)" stroke-width="6" opacity=".5">
+              <animate attributeName="d" dur="7.8s" repeatCount="indefinite"
+                values="M640 470 C 580 400, 510 270, 490 140;
+                        M640 470 C 575 390, 500 255, 475 125;
+                        M640 470 C 585 410, 520 280, 500 150;
+                        M640 470 C 580 400, 510 270, 490 140"/>
+            </path>
+            <path stroke="url(#vFlow)" stroke-width="10" opacity=".7">
+              <animate attributeName="d" dur="6.8s" repeatCount="indefinite"
+                values="M640 470 C 720 420, 810 300, 850 160;
+                        M640 470 C 730 410, 825 285, 870 145;
+                        M640 470 C 715 430, 800 310, 835 170;
+                        M640 470 C 720 420, 810 300, 850 160"/>
+            </path>
+            <path stroke="url(#vFlow)" stroke-width="6" opacity=".5">
+              <animate attributeName="d" dur="8.1s" repeatCount="indefinite"
+                values="M640 470 C 700 400, 770 270, 790 140;
+                        M640 470 C 705 390, 780 255, 805 125;
+                        M640 470 C 695 410, 760 280, 780 150;
+                        M640 470 C 700 400, 770 270, 790 140"/>
+            </path>
+          </g>
+          <!-- spark pulse bloom -->
+          <ellipse cx="640" cy="455" rx="90" ry="70" fill="url(#sparkPulse)"/>
+        </svg>
+      </div>
+      <p class="label">Animated — aurora flow</p>
+    </div>
+  </div>
+  <p class="note">Your mark, live: green / violet trails drift like northern lights from the spark. Prefers-reduced-motion falls back to still.</p>
+</body>
+</html>
