@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TBEF Spark Wings — ribbons only</title>
+<title>TBEF Spark Wings — belt-loop ribbons</title>
 <style>
   :root { --bg:#05070f; --ink:#e8ecf8; }
   * { box-sizing: border-box; }
@@ -29,13 +29,12 @@
   .label { font-size:.85rem; opacity:.7; margin:0; }
   .note { max-width:44rem; text-align:center; font-size:.8rem; opacity:.55; line-height:1.45; margin:0; }
   @media (prefers-reduced-motion: reduce) {
-    .ribbons .flow { animation: none !important; }
-    .ribbons animate { display:none; }
+    .ribbons .belt { animation: none !important; stroke-dashoffset: 0 !important; }
   }
 </style>
 </head>
 <body>
-  <h1>The Butterfly Effect Foundation — mark still, ribbons move</h1>
+  <h1>The Butterfly Effect Foundation — belt-loop ribbons</h1>
   <div class="row">
     <div class="col">
       <div class="stage" aria-label="Still logo">
@@ -44,105 +43,74 @@
       <p class="label">Still</p>
     </div>
     <div class="col">
-      <div class="stage" aria-label="Animated ribbons only">
+      <div class="stage" aria-label="Belt-loop animated ribbons">
         <img class="base" src="spark-wings-polished-still.png" alt="Spark Wings base"/>
-        <!-- Only the color ribbons animate; the PNG mark never moves -->
         <svg class="ribbons" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
-            <linearGradient id="gL" x1="0" y1="1" x2="0.2" y2="0">
+            <linearGradient id="gL" x1="0" y1="1" x2="0.15" y2="0">
               <stop offset="0%" stop-color="#0E7458" stop-opacity="0"/>
-              <stop offset="35%" stop-color="#3FCCA0" stop-opacity=".85"/>
+              <stop offset="40%" stop-color="#3FCCA0" stop-opacity="1"/>
               <stop offset="100%" stop-color="#9dffd8" stop-opacity="0"/>
             </linearGradient>
-            <linearGradient id="gR" x1="1" y1="1" x2="0.8" y2="0">
+            <linearGradient id="gR" x1="1" y1="1" x2="0.85" y2="0">
               <stop offset="0%" stop-color="#5B3FC4" stop-opacity="0"/>
-              <stop offset="35%" stop-color="#A48BF2" stop-opacity=".85"/>
+              <stop offset="40%" stop-color="#A48BF2" stop-opacity="1"/>
               <stop offset="100%" stop-color="#e0d4ff" stop-opacity="0"/>
             </linearGradient>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="4" result="b"/>
+            <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="3.2" result="b"/>
               <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
             <radialGradient id="spark" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fff6c8" stop-opacity=".7"/>
-              <stop offset="55%" stop-color="#ffd36a" stop-opacity=".25"/>
+              <stop offset="0%" stop-color="#fff6c8" stop-opacity=".65"/>
+              <stop offset="55%" stop-color="#ffd36a" stop-opacity=".2"/>
               <stop offset="100%" stop-color="#ffd36a" stop-opacity="0"/>
             </radialGradient>
           </defs>
-          <g filter="url(#glow)" fill="none" stroke-linecap="round" opacity=".9">
-            <!-- LEFT aurora ribbons (morph only) -->
-            <path stroke="url(#gL)" stroke-width="14" opacity=".75">
-              <animate attributeName="d" dur="5.5s" repeatCount="indefinite" calcMode="spline"
-                keyTimes="0;0.33;0.66;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"
-                values="M640 455 C 560 400, 470 290, 420 150;
-                        M640 455 C 548 392, 452 275, 400 135;
-                        M640 455 C 568 408, 482 300, 435 160;
-                        M640 455 C 560 400, 470 290, 420 150"/>
-              <animate attributeName="opacity" values=".55;.85;.55" dur="4s" repeatCount="indefinite"/>
+          <!-- Fixed ribbon shapes; dashoffset = drive belt travel -->
+          <g filter="url(#glow)" fill="none" stroke-linecap="round">
+            <path class="belt" d="M640 455 C 560 400, 470 290, 420 150" stroke="url(#gL)" stroke-width="13" opacity=".8"
+              stroke-dasharray="42 28" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.8s" repeatCount="indefinite"/>
             </path>
-            <path stroke="url(#gL)" stroke-width="9" opacity=".6">
-              <animate attributeName="d" dur="6.8s" repeatCount="indefinite"
-                values="M640 455 C 575 385, 505 255, 480 130;
-                        M640 455 C 568 375, 492 240, 462 115;
-                        M640 455 C 582 395, 515 265, 492 140;
-                        M640 455 C 575 385, 505 255, 480 130"/>
+            <path class="belt" d="M640 455 C 575 385, 505 255, 480 130" stroke="url(#gL)" stroke-width="8" opacity=".65"
+              stroke-dasharray="30 22" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="3.4s" repeatCount="indefinite"/>
             </path>
-            <path stroke="url(#gL)" stroke-width="6" opacity=".45">
-              <animate attributeName="d" dur="7.5s" repeatCount="indefinite"
-                values="M640 455 C 545 415, 455 320, 395 200;
-                        M640 455 C 535 405, 440 305, 375 185;
-                        M640 455 C 552 422, 465 330, 408 210;
-                        M640 455 C 545 415, 455 320, 395 200"/>
+            <path class="belt" d="M640 455 C 545 415, 455 320, 395 200" stroke="url(#gL)" stroke-width="6" opacity=".5"
+              stroke-dasharray="24 20" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="4s" repeatCount="indefinite"/>
             </path>
-            <path stroke="url(#gL)" stroke-width="4" opacity=".35">
-              <animate attributeName="d" dur="8.2s" repeatCount="indefinite"
-                values="M640 455 C 590 370, 540 230, 520 110;
-                        M640 455 C 585 360, 530 215, 505 95;
-                        M640 455 C 595 380, 548 245, 530 120;
-                        M640 455 C 590 370, 540 230, 520 110"/>
+            <path class="belt" d="M640 455 C 590 370, 540 230, 520 110" stroke="url(#gL)" stroke-width="4" opacity=".4"
+              stroke-dasharray="18 16" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="3.1s" repeatCount="indefinite"/>
             </path>
-            <!-- RIGHT -->
-            <path stroke="url(#gR)" stroke-width="14" opacity=".75">
-              <animate attributeName="d" dur="5.7s" repeatCount="indefinite"
-                values="M640 455 C 720 400, 810 290, 860 150;
-                        M640 455 C 732 392, 828 275, 880 135;
-                        M640 455 C 712 408, 798 300, 845 160;
-                        M640 455 C 720 400, 810 290, 860 150"/>
-              <animate attributeName="opacity" values=".55;.85;.55" dur="4.3s" repeatCount="indefinite"/>
+
+            <path class="belt" d="M640 455 C 720 400, 810 290, 860 150" stroke="url(#gR)" stroke-width="13" opacity=".8"
+              stroke-dasharray="42 28" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.9s" repeatCount="indefinite"/>
             </path>
-            <path stroke="url(#gR)" stroke-width="9" opacity=".6">
-              <animate attributeName="d" dur="7s" repeatCount="indefinite"
-                values="M640 455 C 705 385, 775 255, 800 130;
-                        M640 455 C 712 375, 788 240, 818 115;
-                        M640 455 C 698 395, 765 265, 788 140;
-                        M640 455 C 705 385, 775 255, 800 130"/>
+            <path class="belt" d="M640 455 C 705 385, 775 255, 800 130" stroke="url(#gR)" stroke-width="8" opacity=".65"
+              stroke-dasharray="30 22" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="3.5s" repeatCount="indefinite"/>
             </path>
-            <path stroke="url(#gR)" stroke-width="6" opacity=".45">
-              <animate attributeName="d" dur="7.8s" repeatCount="indefinite"
-                values="M640 455 C 735 415, 825 320, 885 200;
-                        M640 455 C 745 405, 840 305, 905 185;
-                        M640 455 C 728 422, 815 330, 872 210;
-                        M640 455 C 735 415, 825 320, 885 200"/>
+            <path class="belt" d="M640 455 C 735 415, 825 320, 885 200" stroke="url(#gR)" stroke-width="6" opacity=".5"
+              stroke-dasharray="24 20" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="4.1s" repeatCount="indefinite"/>
             </path>
-            <path stroke="url(#gR)" stroke-width="4" opacity=".35">
-              <animate attributeName="d" dur="8.5s" repeatCount="indefinite"
-                values="M640 455 C 690 370, 740 230, 760 110;
-                        M640 455 C 695 360, 750 215, 775 95;
-                        M640 455 C 685 380, 732 245, 750 120;
-                        M640 455 C 690 370, 740 230, 760 110"/>
+            <path class="belt" d="M640 455 C 690 370, 740 230, 760 110" stroke="url(#gR)" stroke-width="4" opacity=".4"
+              stroke-dasharray="18 16" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="3.2s" repeatCount="indefinite"/>
             </path>
           </g>
-          <!-- spark pulse only (mark underneath stays put) -->
-          <ellipse cx="640" cy="455" rx="70" ry="52" fill="url(#spark)">
-            <animate attributeName="opacity" values=".35;.85;.35" dur="2.5s" repeatCount="indefinite"/>
-            <animate attributeName="rx" values="60;78;60" dur="2.5s" repeatCount="indefinite"/>
-            <animate attributeName="ry" values="44;58;44" dur="2.5s" repeatCount="indefinite"/>
+          <ellipse cx="640" cy="455" rx="68" ry="50" fill="url(#spark)">
+            <animate attributeName="opacity" values=".4;.8;.4" dur="2.6s" repeatCount="indefinite"/>
           </ellipse>
         </svg>
       </div>
-      <p class="label">Animated — ribbons only</p>
+      <p class="label">Animated — belt loop (shape fixed)</p>
     </div>
   </div>
-  <p class="note">Squircle + base mark stay locked. Only green/violet ribbons drift like northern lights. Hard-refresh after deploy (Cmd-Shift-R).</p>
+  <p class="note">Mark locked. Light travels along fixed ribbon curves like a drive belt. Hard-refresh after deploy (Cmd-Shift-R).</p>
 </body>
 </html>
