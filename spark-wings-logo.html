@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TBEF Spark Wings — still + aurora</title>
+<style>
+  :root {
+    --navy: #101B3A;
+    --violet: #5B3FC4;
+    --lav: #A48BF2;
+    --mint: #3FCCA0;
+    --green: #0E7458;
+    --spark: #FFF6D6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    background: #0a1024; color: #e8ecf8; font-family: system-ui, sans-serif;
+    gap: 1.5rem; padding: 2rem;
+  }
+  h1 { font-size: 1rem; font-weight: 600; margin: 0; opacity: .9; letter-spacing: .02em; }
+  .stage {
+    width: min(360px, 86vw); aspect-ratio: 1;
+    border-radius: 28%;
+    background: radial-gradient(120% 90% at 50% 20%, #1a274d 0%, var(--navy) 55%, #070b18 100%);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 30px 80px rgba(0,0,0,.55);
+    position: relative; overflow: hidden;
+  }
+  .stage::before {
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(255,255,255,.1), transparent 35%);
+    pointer-events:none;
+  }
+  svg { width: 100%; height: 100%; display:block; }
+  .label { font-size: .85rem; opacity: .7; margin: 0; }
+  .row { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:start; }
+  .col { display:grid; gap:.75rem; justify-items:center; }
+</style>
+</head>
+<body>
+  <h1>The Butterfly Effect Foundation — Spark Wings</h1>
+  <div class="row">
+    <div class="col">
+      <div class="stage" aria-label="Still logo">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="sparkG" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fffef5"/>
+              <stop offset="45%" stop-color="#ffe9a8"/>
+              <stop offset="100%" stop-color="#ffd36a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="gL" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#0E7458"/>
+              <stop offset="100%" stop-color="#3FCCA0"/>
+            </linearGradient>
+            <linearGradient id="gR" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#5B3FC4"/>
+              <stop offset="100%" stop-color="#A48BF2"/>
+            </linearGradient>
+            <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="1.6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- left wing trails (still) -->
+          <g filter="url(#glow)" fill="none" stroke-linecap="round">
+            <path d="M100 128 C 78 118, 52 88, 42 52" stroke="url(#gL)" stroke-width="2.2" opacity=".95"/>
+            <path d="M100 128 C 82 112, 60 82, 54 46" stroke="url(#gL)" stroke-width="1.6" opacity=".75"/>
+            <path d="M100 128 C 74 122, 46 96, 34 64" stroke="url(#gL)" stroke-width="1.4" opacity=".65"/>
+            <path d="M100 128 C 86 108, 70 74, 66 40" stroke="url(#gL)" stroke-width="1.2" opacity=".55"/>
+            <path d="M100 128 C 70 114, 40 84, 28 56" stroke="url(#gL)" stroke-width="1.1" opacity=".45"/>
+            <!-- right -->
+            <path d="M100 128 C 122 118, 148 88, 158 52" stroke="url(#gR)" stroke-width="2.2" opacity=".95"/>
+            <path d="M100 128 C 118 112, 140 82, 146 46" stroke="url(#gR)" stroke-width="1.6" opacity=".75"/>
+            <path d="M100 128 C 126 122, 154 96, 166 64" stroke="url(#gR)" stroke-width="1.4" opacity=".65"/>
+            <path d="M100 128 C 114 108, 130 74, 134 40" stroke="url(#gR)" stroke-width="1.2" opacity=".55"/>
+            <path d="M100 128 C 130 114, 160 84, 172 56" stroke="url(#gR)" stroke-width="1.1" opacity=".45"/>
+          </g>
+          <circle cx="100" cy="128" r="10" fill="url(#sparkG)"/>
+          <circle cx="100" cy="128" r="3.2" fill="#fff"/>
+        </svg>
+      </div>
+      <p class="label">Still</p>
+    </div>
+    <div class="col">
+      <div class="stage" aria-label="Animated aurora logo">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="sparkGA" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fffef5"/>
+              <stop offset="45%" stop-color="#ffe9a8"/>
+              <stop offset="100%" stop-color="#ffd36a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="gLA" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#0E7458">
+                <animate attributeName="stop-color" values="#0E7458;#1a9a72;#0E7458" dur="4s" repeatCount="indefinite"/>
+              </stop>
+              <stop offset="100%" stop-color="#3FCCA0">
+                <animate attributeName="stop-color" values="#3FCCA0;#7dffd2;#3FCCA0" dur="3.5s" repeatCount="indefinite"/>
+              </stop>
+            </linearGradient>
+            <linearGradient id="gRA" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#5B3FC4">
+                <animate attributeName="stop-color" values="#5B3FC4;#7a5cf0;#5B3FC4" dur="4.2s" repeatCount="indefinite"/>
+              </stop>
+              <stop offset="100%" stop-color="#A48BF2">
+                <animate attributeName="stop-color" values="#A48BF2;#d2c2ff;#A48BF2" dur="3.2s" repeatCount="indefinite"/>
+              </stop>
+            </linearGradient>
+            <filter id="glowA" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#glowA)" fill="none" stroke-linecap="round">
+            <!-- left aurora ribbons -->
+            <path stroke="url(#gLA)" stroke-width="2.4" opacity=".95">
+              <animate attributeName="d" dur="5s" repeatCount="indefinite"
+                values="M100 128 C 78 118, 52 88, 42 52;
+                        M100 128 C 76 116, 48 84, 38 48;
+                        M100 128 C 80 120, 54 90, 44 54;
+                        M100 128 C 78 118, 52 88, 42 52"/>
+            </path>
+            <path stroke="url(#gLA)" stroke-width="1.7" opacity=".8">
+              <animate attributeName="d" dur="6s" repeatCount="indefinite"
+                values="M100 128 C 82 112, 60 82, 54 46;
+                        M100 128 C 84 108, 62 76, 56 42;
+                        M100 128 C 80 114, 58 84, 52 48;
+                        M100 128 C 82 112, 60 82, 54 46"/>
+            </path>
+            <path stroke="url(#gLA)" stroke-width="1.5" opacity=".65">
+              <animate attributeName="d" dur="7s" repeatCount="indefinite"
+                values="M100 128 C 74 122, 46 96, 34 64;
+                        M100 128 C 72 118, 44 90, 30 58;
+                        M100 128 C 76 124, 48 98, 36 66;
+                        M100 128 C 74 122, 46 96, 34 64"/>
+            </path>
+            <path stroke="url(#gLA)" stroke-width="1.25" opacity=".55">
+              <animate attributeName="d" dur="5.5s" repeatCount="indefinite"
+                values="M100 128 C 86 108, 70 74, 66 40;
+                        M100 128 C 88 104, 72 70, 68 36;
+                        M100 128 C 84 110, 68 78, 64 44;
+                        M100 128 C 86 108, 70 74, 66 40"/>
+            </path>
+            <path stroke="url(#gLA)" stroke-width="1.1" opacity=".42">
+              <animate attributeName="d" dur="8s" repeatCount="indefinite"
+                values="M100 128 C 70 114, 40 84, 28 56;
+                        M100 128 C 68 110, 38 80, 26 52;
+                        M100 128 C 72 116, 42 86, 30 58;
+                        M100 128 C 70 114, 40 84, 28 56"/>
+            </path>
+            <!-- right aurora ribbons -->
+            <path stroke="url(#gRA)" stroke-width="2.4" opacity=".95">
+              <animate attributeName="d" dur="5.2s" repeatCount="indefinite"
+                values="M100 128 C 122 118, 148 88, 158 52;
+                        M100 128 C 124 116, 152 84, 162 48;
+                        M100 128 C 120 120, 146 90, 156 54;
+                        M100 128 C 122 118, 148 88, 158 52"/>
+            </path>
+            <path stroke="url(#gRA)" stroke-width="1.7" opacity=".8">
+              <animate attributeName="d" dur="6.3s" repeatCount="indefinite"
+                values="M100 128 C 118 112, 140 82, 146 46;
+                        M100 128 C 116 108, 138 76, 144 42;
+                        M100 128 C 120 114, 142 84, 148 48;
+                        M100 128 C 118 112, 140 82, 146 46"/>
+            </path>
+            <path stroke="url(#gRA)" stroke-width="1.5" opacity=".65">
+              <animate attributeName="d" dur="7.1s" repeatCount="indefinite"
+                values="M100 128 C 126 122, 154 96, 166 64;
+                        M100 128 C 128 118, 156 90, 170 58;
+                        M100 128 C 124 124, 152 98, 164 66;
+                        M100 128 C 126 122, 154 96, 166 64"/>
+            </path>
+            <path stroke="url(#gRA)" stroke-width="1.25" opacity=".55">
+              <animate attributeName="d" dur="5.8s" repeatCount="indefinite"
+                values="M100 128 C 114 108, 130 74, 134 40;
+                        M100 128 C 112 104, 128 70, 132 36;
+                        M100 128 C 116 110, 132 78, 136 44;
+                        M100 128 C 114 108, 130 74, 134 40"/>
+            </path>
+            <path stroke="url(#gRA)" stroke-width="1.1" opacity=".42">
+              <animate attributeName="d" dur="8.2s" repeatCount="indefinite"
+                values="M100 128 C 130 114, 160 84, 172 56;
+                        M100 128 C 132 110, 162 80, 174 52;
+                        M100 128 C 128 116, 158 86, 170 58;
+                        M100 128 C 130 114, 160 84, 172 56"/>
+            </path>
+          </g>
+          <circle cx="100" cy="128" r="12" fill="url(#sparkGA)">
+            <animate attributeName="r" values="10;13;10" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="100" cy="128" r="3.2" fill="#fff"/>
+        </svg>
+      </div>
+      <p class="label">Animated — aurora flow</p>
+    </div>
+  </div>
+</body>
+</html>
