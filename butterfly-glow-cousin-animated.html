@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TBEF — Mint/violet cousin (wings + pulse)</title>
+<style>
+  :root { --bg:#05070f; --ink:#e8ecf8; }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; min-height:100vh; display:grid; place-items:center;
+    background: radial-gradient(ellipse 70% 55% at 50% 45%, #121a33 0%, var(--bg) 72%);
+    color:var(--ink); font-family:system-ui,sans-serif;
+    gap:1.25rem; padding:2rem 1.25rem;
+  }
+  h1 { font-size:.95rem; font-weight:600; margin:0; text-align:center; opacity:.95; }
+  .stage {
+    width:min(560px,94vw); aspect-ratio:16/9;
+    position:relative; border-radius:18px; overflow:hidden;
+    background:#000; box-shadow:0 24px 70px rgba(0,0,0,.55);
+  }
+  .bug {
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+    transform-origin:50% 55%;
+    animation: sway 7.5s ease-in-out infinite;
+  }
+  @keyframes sway {
+    0%,100% { transform: rotate(-1.4deg); }
+    50% { transform: rotate(1.4deg); }
+  }
+  .wings {
+    position:relative; width:92%; height:92%;
+    transform-style: preserve-3d;
+  }
+  .wing {
+    position:absolute; inset:0;
+    background: url('butterfly-glow-cousin.png') center / contain no-repeat;
+    transform-origin: 50% 52%;
+    will-change: transform, filter;
+  }
+  .wing-left {
+    clip-path: inset(0 50% 0 0);
+    animation: flapL 2.8s ease-in-out infinite, glowPulse 2.4s ease-in-out infinite;
+  }
+  .wing-right {
+    clip-path: inset(0 0 0 50%);
+    animation: flapR 2.8s ease-in-out infinite, glowPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes flapL {
+    0%,100% { transform: perspective(900px) rotateY(0deg) rotateZ(-0.6deg); }
+    50% { transform: perspective(900px) rotateY(14deg) rotateZ(0.8deg); }
+  }
+  @keyframes flapR {
+    0%,100% { transform: perspective(900px) rotateY(0deg) rotateZ(0.6deg); }
+    50% { transform: perspective(900px) rotateY(-14deg) rotateZ(-0.8deg); }
+  }
+  @keyframes glowPulse {
+    0%,100% { filter: brightness(0.92) saturate(1.05); }
+    50% { filter: brightness(1.22) saturate(1.25); }
+  }
+  /* flowing mint/violet light along veins */
+  .veins {
+    position:absolute; inset:0; width:100%; height:100%;
+    pointer-events:none; mix-blend-mode:screen; opacity:.9;
+  }
+  .label { font-size:.85rem; opacity:.7; margin:0; text-align:center; }
+  .note { max-width:40rem; font-size:.8rem; opacity:.55; text-align:center; line-height:1.45; margin:0; }
+  @media (prefers-reduced-motion: reduce) {
+    .bug, .wing-left, .wing-right { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+  <h1>Mint / violet cousin — wings move + glow pulse</h1>
+  <div class="stage" aria-label="Animated cousin butterfly">
+    <div class="bug">
+      <div class="wings">
+        <div class="wing wing-left" aria-hidden="true"></div>
+        <div class="wing wing-right" aria-hidden="true"></div>
+        <svg class="veins" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="mint" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#3FCCA0" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#7dffd2" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#3FCCA0" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="viol" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#A48BF2" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#d2c2ff" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#A48BF2" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="2" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#g)" fill="none" stroke-linecap="round">
+            <path d="M640 380 C 540 330, 430 260, 340 180" stroke="url(#mint)" stroke-width="3" stroke-dasharray="26 74" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.3s" repeatCount="indefinite"/>
+            </path>
+            <path d="M640 385 C 530 360, 400 320, 300 270" stroke="url(#mint)" stroke-width="2.4" stroke-dasharray="20 80" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.8s" repeatCount="indefinite"/>
+            </path>
+            <path d="M640 395 C 560 440, 470 510, 410 590" stroke="url(#mint)" stroke-width="2.5" stroke-dasharray="22 78" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.5s" repeatCount="indefinite"/>
+            </path>
+            <path d="M640 380 C 740 330, 850 260, 940 180" stroke="url(#viol)" stroke-width="3" stroke-dasharray="26 74" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.35s" repeatCount="indefinite"/>
+            </path>
+            <path d="M640 385 C 750 360, 880 320, 980 270" stroke="url(#viol)" stroke-width="2.4" stroke-dasharray="20 80" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.85s" repeatCount="indefinite"/>
+            </path>
+            <path d="M640 395 C 720 440, 810 510, 870 590" stroke="url(#viol)" stroke-width="2.5" stroke-dasharray="22 78" pathLength="100">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="2.55s" repeatCount="indefinite"/>
+            </path>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="label">Gentle flap (site-style sway) · mint/violet vein flow · brighter ↔ dimmer</p>
+  <p class="note">Hard-refresh after deploy (Cmd-Shift-R).</p>
+</body>
+</html>
