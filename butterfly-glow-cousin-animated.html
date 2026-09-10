@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TBEF Cousin Butterfly — body locked, veins on wings</title>
+<title>TBEF Cousin Butterfly — body locked, wings + glow</title>
 <style>
   :root { --bg:#05070f; }
   * { box-sizing: border-box; }
@@ -63,11 +63,7 @@
   }
     50% { filter: brightness(1.10) saturate(1.12); }
   }
-  .vein-layer {
-    position:absolute; inset:0; width:100%; height:100%;
-    pointer-events:none; mix-blend-mode:screen;
-  }
-  .note { font-size:.8rem; opacity:.55; text-align:center; max-width:36rem; margin:0; }
+.note { font-size:.8rem; opacity:.55; text-align:center; max-width:36rem; margin:0; }
   @media (prefers-reduced-motion: reduce) {
     .wing-left, .wing-right { animation: none !important; }
   }
@@ -77,98 +73,12 @@
   <div class="logo" role="img" aria-label="The Butterfly Effect Foundation logo">
     <div class="mark underlay" aria-hidden="true"></div>
     <div class="mark wing wing-left" aria-hidden="true">
-      <svg class="vein-layer" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#9dffd8" stop-opacity="0"/>
-            <stop offset="40%" stop-color="#7dffd2" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#3FCCA0" stop-opacity="0"/>
-          </linearGradient>
-          <filter id="gm" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="1.6" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <g filter="url(#gm)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M618 335 C 560 290, 480 230, 410 160 C 390 140, 375 125, 365 110" stroke="url(#mint)" stroke-width="2.6" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6.5s" begin="0.00s" repeatCount="indefinite"/>
-          </path>
-          <path d="M618 340 C 545 310, 450 260, 370 200 C 345 180, 325 165, 310 150" stroke="url(#mint)" stroke-width="2.3" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.0s" begin="0.55s" repeatCount="indefinite"/>
-          </path>
-          <path d="M618 348 C 540 335, 440 300, 350 255 C 320 235, 295 220, 275 205" stroke="url(#mint)" stroke-width="2.1" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.4s" begin="1.10s" repeatCount="indefinite"/>
-          </path>
-          <path d="M618 355 C 545 360, 460 350, 380 320 C 350 305, 325 295, 305 280" stroke="url(#mint)" stroke-width="1.9" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.7s" begin="1.65s" repeatCount="indefinite"/>
-          </path>
-          <path d="M480 230 C 455 200, 445 175, 440 150" stroke="url(#mint)" stroke-width="1.6" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6.7s" begin="2.20s" repeatCount="indefinite"/>
-          </path>
-          <path d="M450 260 C 420 245, 400 225, 385 200" stroke="url(#mint)" stroke-width="1.5" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.1s" begin="2.75s" repeatCount="indefinite"/>
-          </path>
-          <path d="M618 370 C 560 410, 500 480, 460 560 C 445 590, 438 620, 435 650" stroke="url(#mint)" stroke-width="2.4" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6.8s" begin="3.30s" repeatCount="indefinite"/>
-          </path>
-          <path d="M618 375 C 575 420, 530 500, 505 580 C 495 610, 490 640, 488 665" stroke="url(#mint)" stroke-width="2" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.2s" begin="0.00s" repeatCount="indefinite"/>
-          </path>
-          <path d="M560 410 C 540 450, 525 500, 515 545" stroke="url(#mint)" stroke-width="1.5" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.6s" begin="0.55s" repeatCount="indefinite"/>
-          </path>
-        </g>
-      </svg>
-
-    </div>
+</div>
     <div class="mark wing wing-right" aria-hidden="true">
-      <svg class="vein-layer" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="viol" x1="1" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#e0d4ff" stop-opacity="0"/>
-            <stop offset="40%" stop-color="#d2c2ff" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#A48BF2" stop-opacity="0"/>
-          </linearGradient>
-          <filter id="gv" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="1.6" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <g filter="url(#gv)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M662 335 C 720 290, 800 230, 870 160 C 890 140, 905 125, 915 110" stroke="url(#viol)" stroke-width="2.6" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6.5s" begin="1.10s" repeatCount="indefinite"/>
-          </path>
-          <path d="M662 340 C 735 310, 830 260, 910 200 C 935 180, 955 165, 970 150" stroke="url(#viol)" stroke-width="2.3" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.0s" begin="1.65s" repeatCount="indefinite"/>
-          </path>
-          <path d="M662 348 C 740 335, 840 300, 930 255 C 960 235, 985 220, 1005 205" stroke="url(#viol)" stroke-width="2.1" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.4s" begin="2.20s" repeatCount="indefinite"/>
-          </path>
-          <path d="M662 355 C 735 360, 820 350, 900 320 C 930 305, 955 295, 975 280" stroke="url(#viol)" stroke-width="1.9" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.7s" begin="2.75s" repeatCount="indefinite"/>
-          </path>
-          <path d="M800 230 C 825 200, 835 175, 840 150" stroke="url(#viol)" stroke-width="1.6" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6.7s" begin="3.30s" repeatCount="indefinite"/>
-          </path>
-          <path d="M830 260 C 860 245, 880 225, 895 200" stroke="url(#viol)" stroke-width="1.5" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.1s" begin="0.00s" repeatCount="indefinite"/>
-          </path>
-          <path d="M662 370 C 720 410, 780 480, 820 560 C 835 590, 842 620, 845 650" stroke="url(#viol)" stroke-width="2.4" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6.8s" begin="0.55s" repeatCount="indefinite"/>
-          </path>
-          <path d="M662 375 C 705 420, 750 500, 775 580 C 785 610, 790 640, 792 665" stroke="url(#viol)" stroke-width="2" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.2s" begin="1.10s" repeatCount="indefinite"/>
-          </path>
-          <path d="M720 410 C 740 450, 755 500, 765 545" stroke="url(#viol)" stroke-width="1.5" stroke-dasharray="8 92" pathLength="100">
-            <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7.6s" begin="1.65s" repeatCount="indefinite"/>
-          </path>
-        </g>
-      </svg>
-
-    </div>
+</div>
     <div class="mark body" aria-hidden="true"></div>
     <div class="mark body-strip" aria-hidden="true"></div>
   </div>
-  <p class="note">Body locked. Wings flap. Light travels along wing veins (moves with the wings).</p>
+  <p class="note">Body locked. Wings flap. Colors gently brighten and dim.</p>
 </body>
 </html>
